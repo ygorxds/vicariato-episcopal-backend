@@ -17,9 +17,13 @@ const MescController = {
    
     async inserirMesc(req, res) {
         const mesc = req.body;
+        try{
         let result = await knex('mescs').insert(mesc);
         if(!result) return res.status(400).json({msg:'Mesc does not inserted'});
         return res.status(200).json({msg:'Mesc inserted'});
+} catch {
+    return res.status(500).json({msg:'Mesc not inserted'})
+}
 
     },
     async editarMesc(req, res) {
