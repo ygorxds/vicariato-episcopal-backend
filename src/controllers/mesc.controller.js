@@ -10,9 +10,15 @@ const MescController = {
 
     async buscarPorId(req, res) {
         const { id } = req.params;
-        let mesc = await knex('mescs').where({ id }).first();
-        if (!mesc) return res.status(404).json({ msg: 'Mesc not found' });
-        return res.json(mesc);
+        console.log(id)
+        try {
+          let mesc = await knex('mescs').where({ id }).first();
+          if (!mesc) return res.status(404).json({ message: 'MESC não encontrado.' });
+          return res.json(mesc);
+        } catch (error) {
+          console.error('Erro ao buscar MESC:', error);
+          return res.status(500).json({ message: 'Erro ao buscar MESC.' });
+        }
     },
    
     async inserirMesc(req, res) {
