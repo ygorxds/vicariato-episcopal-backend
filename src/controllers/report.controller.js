@@ -16,10 +16,9 @@ const ParoquiaController = {
                 CALL spCountAgeGroupsBy_date(${startDate ? '?' : 'NULL'}, ${endDate ? '?' : 'NULL'}, ${paroqId ? '?' : 'NULL'}, ${capelId ? '?' : 'NULL'})`,
                 [startDate, endDate, paroqId, capelId].filter(param => param !== null)
             );
-
+            console.log("BATEU AQUI EM!", req.body, results[0][0] )
             res.json(results[0][0]); 
         } catch (error) {
-            console.error('Erro ao chamar a stored procedure:', error);
             res.status(500).send('Erro interno do servidor');
         }
     },
