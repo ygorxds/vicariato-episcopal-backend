@@ -5,7 +5,8 @@
   "main": "src/context.js",
   "scripts": {
     "start": "node src/context.js",
-    "dev": "nodemon src/context.js"
+    "dev": "nodemon src/context.js",
+    "pm2-dev": "pm2 start nodemon --name 'vicariato-backend' -- src/context.js"
   },
   "author": "Ygor Pereira de Sá & Alfredo Boente",
   "license": "ISC",
